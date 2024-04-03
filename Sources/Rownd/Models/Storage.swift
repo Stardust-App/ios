@@ -11,5 +11,5 @@ struct Storage {
 //    static let inst = Storage();
     private init(){}
     
-    static var store = UserDefaults.init(suiteName: "io.rownd.sdk")
+    static var store = UserDefaults.init(suiteName: "group.io.rownd.sdk")
 }
