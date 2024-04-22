@@ -10,7 +10,7 @@ import ReSwift
 import ReSwiftThunk
 import Kronos
 
-fileprivate let STORAGE_STATE_KEY = "RowndState"
+let STORAGE_STATE_KEY = "RowndState"
 
 public struct RowndState: Codable, Hashable {
     public var isStateLoaded = false
@@ -53,6 +53,8 @@ extension RowndState {
     }
     
     func load(_ store: Store<RowndState>) async {
+        Storage.migrateKeyIfExists() // Stardust
+        
         let existingStateStr = Storage.store?.object(forKey: STORAGE_STATE_KEY) as? String
 //        logger.trace("initial store state: \(existingStateStr)")
         
